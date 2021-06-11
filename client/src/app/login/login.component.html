@@ -1,0 +1,36 @@
+<div class="card" style="max-width: 700px;">
+  <div class="login-wrapper">
+    <img width="286px" src="../../assets/images/login.svg" style="align-self: center;" />
+    <div class="card-body">
+      <p class="lead mb-4 fs-4" style="max-width: 250px;">Welcome back, please login to your account</p>
+      <form [formGroup]="loginForm" [class.was-validated]="wasValidated" (ngSubmit)="onSubmit()">
+        <div class="mb-2">
+          <div class="input-group">
+            <span class="input-group-text bg-primary" id="basic-addon3"><i
+                class="bi-person-lines-fill text-white"></i></span>
+            <input required type="email" class="form-control" placeholder="Email" formControlName="email">
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="input-group">
+            <span class="input-group-text bg-primary" id="basic-addon3"><i class="bi-key-fill text-white"></i></span>
+            <input required type="password" placeholder="Password" class="form-control" formControlName="password">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="position-fixed top-0 p-3" role="alert" style="z-index: 5">
+  <div id="loginErrorToast" class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        The email or password is invalid.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
+</div>
