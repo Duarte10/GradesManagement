@@ -1,15 +1,11 @@
 const jwtModule = require('./jwtModule')
 const httpStatus = require('../lib/httpStatus');
+const config = require('../config/index');
 
 function verifyToken(req, res, next) {
-  const audience = req.query.application
-  if (!audience) {
-    return res.status(httpStatus.FORBIDDEN).send({
-      auth: false, message: 'Missing application in query parameters' });
-  }
   const token = jwtModule.parseTokenFromAuthorizationHeader(req)
   if (token) {
-    const verifyResult = jwtModule.verify(token, {audience})
+    const verifyResult = jwtModule.verify(token, { audience: config.audience })
     if (verifyResult && verifyResult.id) {
       req.userId = verifyResult.id;
       next();

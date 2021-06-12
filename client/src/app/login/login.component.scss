@@ -8,6 +8,13 @@
 
   .login-wrapper {
     display: flex;
+
+    .login-image {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      width: 286px;
+      align-self: center;
+    }
   }
 }
 

@@ -6,39 +6,36 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-new-class',
+  templateUrl: './new-class.component.html',
+  styleUrls: ['./new-class.component.scss']
 })
-export class LoginComponent {
+export class NewClassComponent {
 
   wasValidated = false;
-  loginForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]]
+  newClassForm = this.formBuilder.group({
+    name: ['', [Validators.required, Validators.minLength(2)]]
   });
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
   onSubmit(): void {
-    // login request
-    if (this.loginForm.dirty && this.loginForm.valid) {
+    if (this.newClassForm.dirty && this.newClassForm.valid) {
       // login request
-      this.http.post('authentication/login', {
-        email: this.loginForm.value.email,
-        password: this.loginForm.value.password,
+      this.http.post('class', {
+        name: this.newClassForm.value.name,
         "application": "grades system"
       }).subscribe(
         (result: any) => {
-          // store login data
-          this.authService.saveLoginData(result.token, result.expiresAt);
+          () => new Toast(document.getElementById("classToast")).show();
           this.router.navigate([""]);
         },
-        () => new Toast(document.getElementById("loginErrorToast")).show()
+        () => new Toast(document.getElementById("errorToast")).show()
       );
     } else {
       this.wasValidated = true;
     }
   }
+
 
 }

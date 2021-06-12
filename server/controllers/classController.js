@@ -1,50 +1,48 @@
 const express = require('express');
 const router = express.Router();
 const httpStatus = require('lib/httpStatus');
-const User = require('../models/User');
 const verifyToken = require('../lib/verifyToken');
+const Class = require('../models/Class');
 
-router.post('/', function (req, res) {
-  User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password
-  },
-    function (err, user) {
+router.post('/', verifyToken, function (req, res) {
+  Class.create({ name: req.body.name },
+    function (err, classModel) {
       if (err) return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(`Server error: ${err.message}`);
-      res.status(httpStatus.OK).send(user);
+      res.status(httpStatus.OK).send(classModel);
     });
 });
 
+
 router.get('/', verifyToken, function (req, res, next) {
-  User.find({}, function (err, users) {
+  Class.find({}, function (err, classes) {
     if (err) return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(`Server error: ${err.message}`);
-    res.status(httpStatus.OK).send(users);
-  }).select('-password -__v').sort({ name: 1 });
+    res.status(httpStatus.OK).send(classes);
+  }).sort({ name: 1 });
 });
 
 router.get('/:id', function (req, res) {
-  User.findById(req.params.id, function (err, user) {
+  Class.findById(req.params.id, function (err, classModel) {
     if (err) return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(`Server error: ${err.message}`);
-    if (!user) return res.status(httpStatus.NOT_FOUND).send('User not found');
-    res.status(httpStatus.OK).send(user);
-  }).select('-password -__v');
+    if (!classModel) return res.status(httpStatus.NOT_FOUND).send('Class not found');
+    res.status(httpStatus.OK).send(classModel);
+  });
 });
 
 router.delete('/:id', verifyToken, function (req, res) {
-  User.findByIdAndRemove(req.params.id, function (err, user) {
+  Class.findByIdAndRemove(req.params.id, function (err, classModel) {
     if (err) return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(`Server error: ${err.message}`);
-    res.status(httpStatus.OK).send("User: " + user.name + " was deleted.");
+    res.status(httpStatus.OK).send("Class: " + classModel.name + " was deleted.");
   });
 });
 
 router.put('/:id', verifyToken, function (req, res) {
-  User.findByIdAndUpdate(req.params.id, {
-    $set: { email: req.body.email, name: req.body.name }
+  Class.findByIdAndUpdate(req.params.id, {
+    $set: { name: req.body.name }
   }, { new: false }, function (err, user) {
     if (err) return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(`Server error: ${err.message}`);
     res.status(httpStatus.NO_CONTENT).send(user);
   });
 });
+
 
 module.exports = router;

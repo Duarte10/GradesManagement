@@ -20,4 +20,8 @@ export class AuthService {
         // check if token has expired
         return new Date(parseInt(expiresAt)) > new Date();
     }
+
+    getAccessToken(): string {
+        return localStorage.getItem("accessToken");
+    }
 }

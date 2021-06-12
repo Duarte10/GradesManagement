@@ -9,8 +9,8 @@ const bcrypt = require('bcryptjs');
 const config = require('../config/index');
 
 router.post('/login', function (req, res) {
-  const { application, email, password } = req.body
-  if (!application || !email || !password) {
+  const { email, password } = req.body
+  if (!email || !password) {
     return res.status(httpStatus.BAD_REQUEST).send({ auth: false, error: 'Invalid parameters in request' });
   }
   User.findOne({ email }, function (error, user) {
@@ -26,7 +26,7 @@ router.post('/login', function (req, res) {
           const payload = { id: _id }
           const signingOptions = {
             subject: email,
-            audience: application
+            audience: config.audience
           }
           const signedToken = jwtModule.sign(payload, signingOptions)
           let expiresAt = new Date();

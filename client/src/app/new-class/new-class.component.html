@@ -1,0 +1,31 @@
+<form [formGroup]="newClassForm" [class.was-validated]="wasValidated" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="className" class="form-label">Class name</label>
+    <input type="text" required class="form-control" id="className" formControlName="name">
+  </div>   
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<!-- <div class="position-fixed top-0 p-3" role="alert" style="z-index: 5">
+  <div id="classToast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        The class was saved successfully.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
+</div>
+
+<div class="position-fixed top-0 p-3" role="alert" style="z-index: 5">
+  <div id="errorToast" class="toast bg-danger text-white" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        There was a problem saving the class, please try again later.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+        aria-label="Close"></button>
+    </div>
+  </div>
+</div> -->

@@ -5,17 +5,22 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { AuthService } from './auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ApiInterceptor } from './api.interceptor';
-
 import "bootstrap";
+import { ClassComponent } from './class/class.component';
+import { NewClassComponent } from './new-class/new-class.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ClassComponent,
+    NewClassComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -21,4 +21,7 @@ app.use('/api/v1/users', userController);
 const authController = require('controllers/authController');
 app.use('/api/v1/authentication', authController);
 
+const classController = require('controllers/classController');
+app.use('/api/v1/class', classController);
+
 module.exports = app;
