@@ -19,16 +19,19 @@ export class NewClassComponent {
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
+  showToast() {
+    new Toast(document.getElementById("classToast")).show();
+  }
+
   onSubmit(): void {
     if (this.newClassForm.dirty && this.newClassForm.valid) {
       // login request
       this.http.post('class', {
-        name: this.newClassForm.value.name,
-        "application": "grades system"
+        name: this.newClassForm.value.name
       }).subscribe(
-        (result: any) => {
-          () => new Toast(document.getElementById("classToast")).show();
-          this.router.navigate([""]);
+        () => {
+          new Toast(document.getElementById("classToast")).show();
+          // this.router.navigate([""]);
         },
         () => new Toast(document.getElementById("errorToast")).show()
       );

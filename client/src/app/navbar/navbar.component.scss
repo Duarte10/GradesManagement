@@ -1,0 +1,12 @@
+@import "../../variables.scss";
+
+:host {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .navbar-brand {
+    padding-right: 15px;
+    border-right: solid 2px $primary;
+  }
+}

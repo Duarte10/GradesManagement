@@ -6,6 +6,11 @@ export class AuthService {
         localStorage.setItem("expiresAt", expiresAt);
     }
 
+    logout() {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("expiresAt");
+    }
+
     isAuthenticated(): boolean {
         // check if token exists
         const accessToken = localStorage.getItem("accessToken");

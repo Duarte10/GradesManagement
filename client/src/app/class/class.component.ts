@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Toast } from "bootstrap";
@@ -10,6 +10,19 @@ import { AuthService } from '../auth.service';
   templateUrl: './class.component.html',
   styleUrls: ['./class.component.scss']
 })
-export class ClassComponent {
+export class ClassComponent implements OnInit {
+
+  classes = [];
   constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+
+  ngOnInit() {
+    // load classes
+    this.http.get('class').subscribe(
+      (data: any) => {
+        this.classes = data;
+        console.log(data);
+      },
+      error => console.error(error)
+    )
+  }
 }

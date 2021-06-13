@@ -5,17 +5,27 @@ import { AuthActivator } from './auth.activator';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewClassComponent } from './new-class/new-class.component';
 import { ClassComponent } from './class/class.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
     path: '', component: NavbarComponent,
     canActivate: [AuthActivator],
     children: [
-      // {
-      //   path: 'class',
-      //   component: ClassComponent
-      // },
+      {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
+        path: 'class',
+        component: ClassComponent
+      },
       {
         path: 'class/new',
         component: NewClassComponent

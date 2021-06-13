@@ -12,6 +12,7 @@ import { ApiInterceptor } from './api.interceptor';
 import "bootstrap";
 import { ClassComponent } from './class/class.component';
 import { NewClassComponent } from './new-class/new-class.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NewClassComponent } from './new-class/new-class.component';
     LoginComponent,
     ClassComponent,
     NewClassComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

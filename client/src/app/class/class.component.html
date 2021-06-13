@@ -1,1 +1,24 @@
-<p>class works</p>
+<div class="box">
+    <h5>Classes</h5>
+    <hr />
+    <table class="table table-borderless table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Years</th>
+                <th></th>
+            </tr>
+        </thead>   
+        <tbody>
+            <tr *ngFor="let class of classes">
+                <td>{{class.name}}</td>
+                <td>5</td>
+                <td class="text-center">
+                    <a class="text-primary" style="cursor: pointer;"><i class="bi-pencil-square"></i></a>
+                    <a class="text-primary" style="padding-left: 8px; cursor: pointer;"><i class="bi-trash"></i></a>
+                </td>
+            </tr>
+        </tbody> 
+    </table>
+    <a class="btn btn-primary text-white btn-sm" routerLink="/class/new">New</a>
+</div>

@@ -1,5 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "./variables.scss";
+
+// import bootstrap after overriding variables
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
 body {
   height: 100vh;
+  background-color: $light;
+}
+
+.box {
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .05);
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 18px;
+}
+
+.nav-link {
+  color: $black;
 }

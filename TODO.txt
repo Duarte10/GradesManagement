@@ -1,0 +1,5 @@
+TODO:
+Delete class
+Add property Code to class
+Return domain error ("name repeated")
+After successfully creating a class, show the toast and redirect to classes list.
