@@ -27,4 +27,7 @@ app.use('/api/v1/class', classController);
 const studentController = require('controllers/studentController');
 app.use('/api/v1/student', studentController);
 
+const classSemesterController = require('controllers/classSemesterController');
+app.use('/api/v1/class-semester', classSemesterController);
+
 module.exports = app;

@@ -9,8 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthService } from './shared/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ApiInterceptor } from './shared/api.interceptor';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import "bootstrap";
+
+import { ApiInterceptor } from './shared/api.interceptor';
 import { ClassComponent } from './class/class.component';
 import { NewClassComponent } from './new-class/new-class.component';
 import { HomeComponent } from './home/home.component';
@@ -43,7 +45,8 @@ import { EditClassSemesterComponent } from './edit-class-semester/edit-class-sem
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AutocompleteLibModule
   ],
   providers: [
     AuthService,

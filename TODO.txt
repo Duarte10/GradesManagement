@@ -4,15 +4,14 @@ Student - Add/Edit [OK]
 Semester - Add Grade Components, Add/remove students, Enter grades:
     - Evaluation components:
         - Add to local table [OK]
-        - Delete from local table
-        - Edit from local table
-        - Persist values
+        - Delete from local table [OK]
+        - Edit from local table [OK]
+        - Persist values [OK]
     - Student grades:
-        - Add to local table (Select user)
-        - Delete from local table
-        - Edit from local table
-        - Persist values
-        
+        - Add to local table (Select user) [OK]
+        - Delete from local table [OK]
+        - Edit from local table [OK]
+        - Persist values [OK]
 Courses (Assign course to class)
 
 N2HAVE: 
@@ -21,6 +20,7 @@ Import csv
 Paginacao
 Home page - dashboards
 View grades for class-semester + Print Grades Report
+Grades average
 Student - Create Inline
 Publish to firebase
 Sidebar - https://getbootstrap.com/docs/5.0/examples/sidebars/#

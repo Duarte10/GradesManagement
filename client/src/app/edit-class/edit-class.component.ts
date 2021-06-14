@@ -7,8 +7,6 @@ import { Router } from '@angular/router';
 import { ToastService } from '../shared/toast.service';
 import { Modal } from "bootstrap";
 
-
-
 @Component({
   selector: 'app-edit-class',
   templateUrl: './edit-class.component.html',

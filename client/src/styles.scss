@@ -24,3 +24,15 @@ body {
 .btn-outline-primary:hover {
   color: #fff;
 }
+
+.ng-autocomplete {
+  width: 100% !important;
+
+  .autocomplete-container {
+    box-shadow: none;
+
+    input {
+      border: 1px solid #ced4da !important;
+    }
+  }
+}
