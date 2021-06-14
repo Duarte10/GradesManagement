@@ -12,12 +12,15 @@ import { NewStudentComponent } from './new-student/new-student.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { ViewClassComponent } from './view-class/view-class.component';
 import { EditClassSemesterComponent } from './edit-class-semester/edit-class-semester.component';
+import { CoursesComponent } from './courses/courses.component';
+import { NewCourseComponent } from './new-course/new-course.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/courses',
     pathMatch: 'full'
   },
   {
@@ -59,6 +62,18 @@ const routes: Routes = [
       {
         path: 'student/:id/edit',
         component: EditStudentComponent
+      },
+      {
+        path: 'courses',
+        component: CoursesComponent
+      },
+      {
+        path: 'courses/new',
+        component: NewCourseComponent
+      },
+      {
+        path: 'courses/:id/edit',
+        component: EditCourseComponent
       },
     ]
   },

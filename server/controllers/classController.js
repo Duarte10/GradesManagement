@@ -4,6 +4,7 @@ const httpStatus = require('lib/httpStatus');
 const verifyToken = require('../lib/verifyToken');
 const Class = require('../models/Class');
 const ClassSemester = require('../models/ClassSemester');
+const Course = require('../models/Course');
 
 router.post('/', verifyToken, async function (req, res) {
   // check if code is already assigned to another class
@@ -49,7 +50,10 @@ router.get('/:id', async function (req, res) {
     if (classModel.semesters && classModel.semesters.length) {
       let semestersDetailed = [];
       for (let i = 0; i < classModel.semesters.length; i++) {
-        semestersDetailed.push(await ClassSemester.findById(classModel.semesters[i]));
+        let semester = await ClassSemester.findById(classModel.semesters[i]);
+        // load the semester course
+        semester.course = await Course.findById(semester.course);
+        semestersDetailed.push(semester);
       }
       classModel.semesters = semestersDetailed;
     }
@@ -91,9 +95,9 @@ router.put('/:id', verifyToken, async function (req, res) {
   req.body.semesters = semestersIds;
   Class.findByIdAndUpdate(req.params.id, {
     $set: { ...req.body }
-  }, { new: false }, function (err, user) {
+  }, { new: false }, function (err, classModel) {
     if (err) return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(`Server error: ${err.message}`);
-    res.status(httpStatus.NO_CONTENT).send(user);
+    res.status(httpStatus.NO_CONTENT).send(classModel);
   });
 });
 

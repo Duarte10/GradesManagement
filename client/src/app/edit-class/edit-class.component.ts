@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -22,11 +22,15 @@ export class EditClassComponent implements OnInit, OnDestroy {
     name: ['', [Validators.required, Validators.minLength(2)]]
   });
   semesters = [];
+  courses = [];
 
   newSemesterYear: Number;
   newSemesterName = "Spring";
   class: any;
   deleteSemesterConfirmationModal: Modal;
+  @ViewChild('coursesAutoComplete', { static: false }) coursesAutoComplete;
+  coursesAutoCompleteData = [];
+  selectedCourse: any;
 
   private selectedSemesterId: string;
   private deletedSemesters = [];
@@ -40,6 +44,8 @@ export class EditClassComponent implements OnInit, OnDestroy {
         this.loadClass(this.id);
       }
     });
+
+    this.loadCourses();
     this.deleteSemesterConfirmationModal = new Modal(document.getElementById('deleteSemesterConfirmModal'));
   }
 
@@ -56,6 +62,9 @@ export class EditClassComponent implements OnInit, OnDestroy {
   }
 
   addSemester() {
+    if (!this.selectedCourse) {
+      this.toast.showToast("Enter a course", "bg-danger text-white");
+    }
     if (!this.newSemesterYear || !this.newSemesterName || this.newSemesterYear < 0) {
       this.toast.showToast("Enter a valid year", "bg-danger text-white");
       return;
@@ -68,11 +77,12 @@ export class EditClassComponent implements OnInit, OnDestroy {
     }
 
     // Add the semester
-    this.semesters.push({ year: this.newSemesterYear, name: this.newSemesterName });
+    this.semesters.push({ year: this.newSemesterYear, name: this.newSemesterName, coruse: this.selectedCourse });
 
     // Clear the form
     this.newSemesterYear = undefined;
     this.newSemesterName = "Spring";
+    this.selectedCourse = undefined;
 
     // Mark form as dirty
     this.editClassForm.markAsDirty();
@@ -139,6 +149,10 @@ export class EditClassComponent implements OnInit, OnDestroy {
     this.editClassForm.markAsDirty();
   }
 
+  selectCourse(course: any) {
+    this.selectedCourse = course;
+  }
+
   private loadClass(id: string) {
     this.http.get('class/' + id).subscribe(
       (data: any) => {
@@ -147,6 +161,21 @@ export class EditClassComponent implements OnInit, OnDestroy {
           name: data.name
         });
         this.semesters = data.semesters;
+      },
+      error => console.error(error)
+    )
+  }
+
+  private loadCourses() {
+    this.http.get('course').subscribe(
+      (data: any) => {
+        this.courses = data;
+        this.coursesAutoCompleteData = data.map(c => {
+          return {
+            id: c.id,
+            name: c.name
+          }
+        })
       },
       error => console.error(error)
     )

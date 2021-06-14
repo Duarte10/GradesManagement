@@ -31,7 +31,8 @@ const classSemesterSchema = new Schema({
         type: String
     },
     students: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
-    evaluationComponents: [evaluationComponentSchema]
+    evaluationComponents: [evaluationComponentSchema],
+    course: { type: Schema.Types.ObjectId, ref: 'Course' }
 });
 
 classSemesterSchema.plugin(uniqueValidator);

@@ -32,16 +32,30 @@
       </table>
       <div class="row pt-3 pb-4">
         <div class="col-6 col-md-3">
+          <ng-autocomplete #coursesAutoComplete [data]="coursesAutoCompleteData" (selected)="selectCourse($event)"
+            [searchKeyword]="'name'" [itemTemplate]="itemTemplate" [placeholder]="'Course...'"
+            [notFoundTemplate]="notFoundTemplate">
+          </ng-autocomplete>
+
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+          </ng-template>
+
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+        <div class="col-6 col-md-3">
           <input type="number" [value]="newSemesterYear" (change)="onNewSemesterYearChange($event)" class="form-control"
             id="year" placeholder="Year">
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-6 col-md-3">
           <select class="form-select" [value]="newSemesterName" (change)="onNewSemesterNameChange($event)">
             <option value="Spring" selected>Spring Semester</option>
             <option value="Autumn">Autumn Semester</option>
           </select>
         </div>
-        <div class="pt-2 pt-md-0 col-6 col-md-4">
+        <div class="pt-2 pt-md-0 col-6 col-md-3">
           <button type="button" class="btn btn-outline-primary" (click)="addSemester()">Add Semester</button>
         </div>
       </div>
