@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Toast } from "bootstrap";
-import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { Modal } from "bootstrap";
+import { ToastService } from '../shared/toast.service';
 
 @Component({
   selector: 'app-class',
@@ -13,16 +11,45 @@ import { AuthService } from '../auth.service';
 export class ClassComponent implements OnInit {
 
   classes = [];
-  constructor(private http: HttpClient, private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
+  deleteClassConfirmationModal: Modal;
+  selectedClassId: string;
+
+  constructor(private http: HttpClient, private toast: ToastService) { }
 
   ngOnInit() {
     // load classes
     this.http.get('class').subscribe(
       (data: any) => {
         this.classes = data;
-        console.log(data);
       },
       error => console.error(error)
-    )
+    );
+
+    this.deleteClassConfirmationModal = new Modal(document.getElementById('deleteClassConfirmModal'));
+  }
+
+  promptDelete(id) {
+    this.selectedClassId = id;
+    if (this.deleteClassConfirmationModal) {
+      this.deleteClassConfirmationModal.show();
+    } else {
+      console.error("Unexpected: deleteClassConfirmationModal doesn't exist");
+    }
+  }
+
+  confirmDelete() {
+    this.http.delete('class/' + this.selectedClassId)
+      .subscribe(
+        () => {
+          this.toast.showToast("The class was deleted successfully");
+          this.classes = this.classes.filter(c => c.id !== this.selectedClassId);
+          this.selectedClassId = undefined;
+          this.deleteClassConfirmationModal.hide();
+        },
+        error => {
+          this.toast.showToast("There was a problem deleting the class, please try again later.", "bg-danger text-white");
+          console.error(error);
+        }
+      )
   }
 }

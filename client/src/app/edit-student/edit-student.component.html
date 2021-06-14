@@ -1,0 +1,16 @@
+<div class="box">
+    <h5>Edit student</h5>
+    <hr />
+  <form [formGroup]="editStudentForm" [class.was-validated]="wasValidated" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="number" class="form-label">Number</label>
+      <input type="text" required class="form-control" id="number" formControlName="number" placeholder="Number...">
+    </div>  
+    <div class="mb-3">
+      <label for="className" class="form-label">Name</label>
+      <input type="text" required class="form-control" id="className" formControlName="name" placeholder="Name...">
+    </div>
+    <button type="submit" class="btn btn-primary text-white">Save</button>
+  </form>
+  </div>
+  

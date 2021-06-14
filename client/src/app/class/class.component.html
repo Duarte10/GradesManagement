@@ -1,24 +1,41 @@
 <div class="box">
-    <h5>Classes</h5>
-    <hr />
-    <table class="table table-borderless table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Years</th>
-                <th></th>
-            </tr>
-        </thead>   
-        <tbody>
-            <tr *ngFor="let class of classes">
-                <td>{{class.name}}</td>
-                <td>5</td>
-                <td class="text-center">
-                    <a class="text-primary" style="cursor: pointer;"><i class="bi-pencil-square"></i></a>
-                    <a class="text-primary" style="padding-left: 8px; cursor: pointer;"><i class="bi-trash"></i></a>
-                </td>
-            </tr>
-        </tbody> 
-    </table>
-    <a class="btn btn-primary text-white btn-sm" routerLink="/class/new">New</a>
+  <h5>Classes</h5>
+  <hr />
+  <table class="table table-borderless table-striped">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let class of classes">
+        <td>{{class.code}}</td>
+        <td>{{class.name}}</td>
+        <td class="text-center">
+          <a class="text-primary" style="cursor: pointer;" [routerLink]="['/class', class.id]"><i class="bi-eye-fill"></i></a>
+          <a class="text-primary" style="cursor: pointer; padding-left: 8px;" [routerLink]="['/class', class.id, 'edit']"><i class="bi-pencil-square"></i></a>
+          <a class="text-primary" (click)="promptDelete(class.id)" style="padding-left: 8px; cursor: pointer;"><i class="bi-trash"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary text-white btn-sm" routerLink="/class/new">New</a>
+</div>
+
+<!-- Delete confirmation Modal -->
+<div class="modal fade modal-fullscreen-sm-down" id="deleteClassConfirmModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the class?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary text-white" (click)="confirmDelete()">Yes</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,27 @@
 TODO:
-Delete class
-Add property Code to class
-Return domain error ("name repeated")
-After successfully creating a class, show the toast and redirect to classes list.
+Class - Edit Mode [OK]
+Student - Add/Edit [OK]
+Semester - Add Grade Components, Add/remove students, Enter grades:
+    - Evaluation components:
+        - Add to local table [OK]
+        - Delete from local table
+        - Edit from local table
+        - Persist values
+    - Student grades:
+        - Add to local table (Select user)
+        - Delete from local table
+        - Edit from local table
+        - Persist values
+        
+Courses (Assign course to class)
+
+N2HAVE: 
+Register Page
+Import csv
+Paginacao
+Home page - dashboards
+View grades for class-semester + Print Grades Report
+Student - Create Inline
+Publish to firebase
+Sidebar - https://getbootstrap.com/docs/5.0/examples/sidebars/#
+GitHub description Page

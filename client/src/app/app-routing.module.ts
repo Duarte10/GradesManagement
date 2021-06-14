@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { AuthActivator } from './auth.activator';
+import { AuthActivator } from './shared/auth.activator';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewClassComponent } from './new-class/new-class.component';
 import { ClassComponent } from './class/class.component';
 import { HomeComponent } from './home/home.component';
+import { EditClassComponent } from './edit-class/edit-class.component';
+import { StudentComponent } from './student/student.component';
+import { NewStudentComponent } from './new-student/new-student.component';
+import { EditStudentComponent } from './edit-student/edit-student.component';
+import { ViewClassComponent } from './view-class/view-class.component';
+import { EditClassSemesterComponent } from './edit-class-semester/edit-class-semester.component';
 
 
 const routes: Routes = [
@@ -29,6 +35,30 @@ const routes: Routes = [
       {
         path: 'class/new',
         component: NewClassComponent
+      },
+      {
+        path: 'class/:id/edit',
+        component: EditClassComponent
+      },
+      {
+        path: 'class/:id',
+        component: ViewClassComponent
+      },
+      {
+        path: 'class/:id/semester/:semesterId',
+        component: EditClassSemesterComponent
+      },
+      {
+        path: 'student',
+        component: StudentComponent
+      },
+      {
+        path: 'student/new',
+        component: NewStudentComponent
+      },
+      {
+        path: 'student/:id/edit',
+        component: EditStudentComponent
       },
     ]
   },

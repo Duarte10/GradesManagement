@@ -1,0 +1,22 @@
+<div *ngIf="class" class="box">
+    <h5>{{class.code}} - {{class.name}}</h5>
+    <hr />
+    <table class="table table-borderless table-striped">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Semester</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let semester of class.semesters">
+                <td>{{semester.year}}</td>
+                <td>{{semester.name}}</td>
+                <td>
+                    <a class="text-primary" style="cursor: pointer;" [routerLink]="['/class', class.id, 'semester', semester.id]"><i class="bi-pencil-square"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

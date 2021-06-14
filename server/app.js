@@ -24,4 +24,7 @@ app.use('/api/v1/authentication', authController);
 const classController = require('controllers/classController');
 app.use('/api/v1/class', classController);
 
+const studentController = require('controllers/studentController');
+app.use('/api/v1/student', studentController);
+
 module.exports = app;

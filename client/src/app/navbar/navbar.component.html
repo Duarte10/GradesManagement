@@ -1,4 +1,4 @@
-<nav class="navbar box navbar-expand-md mb-3" id="navbar">
+<nav class="navbar navbar-light box navbar-expand-md mb-3" id="navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="../../assets/images/graduation-hat.svg" alt="" width="30" height="24">
@@ -16,9 +16,12 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="text-primary fw-bold" routerLink="/class">Classes</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="text-primary fw-bold" routerLink="/student">Students</a>
+        </li>
       </ul>
       <div style="margin-left: auto;">
-        <a class="nav-link" style="cursor: pointer;" (click)="logout()"><i class="bi-box-arrow-right"
+        <a class="nav-link p-0" style="cursor: pointer;" (click)="logout()"><i class="bi-box-arrow-right"
             style="font-size: 1.6rem;"></i></a>
       </div>
     </div>

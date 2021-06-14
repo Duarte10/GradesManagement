@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Toast } from "bootstrap";
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-login',

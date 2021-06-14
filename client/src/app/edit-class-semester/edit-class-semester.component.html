@@ -1,0 +1,56 @@
+<div *ngIf="class" class="box">
+  <h5>{{class.name}} - {{semester.year}} ({{semester.name}} Semester)</h5>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" style="cursor: pointer;" [class.active]="currentTab === 'evaluation'"
+        (click)="selectTab('evaluation')">Evaluation</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="cursor: pointer;" [class.active]="currentTab === 'grades'"
+        (click)="selectTab('grades')">Grades</a>
+    </li>
+  </ul>
+
+  <div class="pt-3" [class.d-none]="currentTab !== 'evaluation'">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Percentage</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let component of semester.evaluationComponents">
+          <td>{{component.name}}</td>
+          <td>{{component.percentage}}%</td>
+          <td class="text-center">
+            <a class="text-primary" style="padding-left: 8px; cursor: pointer;"><i class="bi-trash"></i></a></td>
+        </tr>
+      </tbody>
+      <tfoot *ngIf="componentEvaluationSum">
+        <tr>
+          <td>Sum</td>
+          <td>{{componentEvaluationSum}}%</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="row pb-4">
+      <div class="col-6 col-md-3">
+        <input type="text" [value]="newEvaluationComponentName" (change)="onNewEvaluationComponentNameChange($event)"
+          class="form-control" placeholder="Name">
+      </div>
+      <div class="col-6 col-md-4">
+        <input type="number" [value]="newEvaluationComponentPercentage"
+          (change)="onNewEvaluationComponentPercentegaeChange($event)" class="form-control" placeholder="Percentage">
+      </div>
+      <div class="pt-2 pt-md-0 col-6 col-md-4">
+        <button type="button" class="btn btn-outline-primary" (click)="addEvaluationComponent()">Add Component</button>
+      </div>
+    </div>
+  </div>
+  <div class="pt-3" [class.d-none]="currentTab !== 'grades'">
+    grades tab
+  </div>
+</div>
