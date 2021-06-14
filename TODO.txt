@@ -12,10 +12,10 @@ Semester - Add Grade Components, Add/remove students, Enter grades:
         - Delete from local table [OK]
         - Edit from local table [OK]
         - Persist values [OK]
-Courses (Assign course to class)
+Courses (Assign course to class) [OK]
 
 N2HAVE: 
-Register Page
+Register Page [OKish] - password match validation not visible
 Import csv
 Paginacao
 Home page - dashboards

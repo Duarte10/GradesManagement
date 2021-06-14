@@ -26,6 +26,7 @@ import { EditClassSemesterComponent } from './edit-class-semester/edit-class-sem
 import { CoursesComponent } from './courses/courses.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { EditCourseComponent } from './edit-course/edit-course.component';
     EditClassSemesterComponent,
     CoursesComponent,
     NewCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

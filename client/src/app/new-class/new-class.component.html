@@ -1,50 +1,69 @@
 <div class="box">
   <h5>New class</h5>
   <hr />
-<form [formGroup]="newClassForm" [class.was-validated]="wasValidated" (ngSubmit)="onSubmit()">
-  <div class="mb-3">
-    <label for="code" class="form-label">Code</label>
-    <input type="text" required class="form-control" id="code" formControlName="code" placeholder="Code...">
-  </div>  
-  <div class="mb-3">
-    <label for="className" class="form-label">Name</label>
-    <input type="text" required class="form-control" id="className" formControlName="name" placeholder="Name...">
-  </div>
-  <div class="mb-3">
-    <label class="form-label">Semesters</label>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Semester</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let semester of semesters">
-          <td>{{semester.year}}</td>
-          <td>{{semester.name}}</td>
-          <td class="text-center">
-            <button class="btn btn-primary text-white"><i class="bi bi-trash"></i></button>
-          </td>
-        </tr>
-      </tbody>
+  <form [formGroup]="newClassForm" [class.was-validated]="wasValidated" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="code" class="form-label">Code</label>
+      <input type="text" required class="form-control" id="code" formControlName="code" placeholder="Code...">
+    </div>
+    <div class="mb-3">
+      <label for="className" class="form-label">Name</label>
+      <input type="text" required class="form-control" id="className" formControlName="name" placeholder="Name...">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Semesters</label>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Course</th>
+            <th>Year</th>
+            <th>Semester</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let semester of semesters">
+            <td>{{semester.course.name}}</td>
+            <td>{{semester.year}}</td>
+            <td>{{semester.name}}</td>
+            <td class="text-center">
+              <button class="btn btn-primary text-white"><i class="bi bi-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>        
+      </table>
       <div class="row pt-3 pb-4">
         <div class="col-6 col-md-3">
-          <input type="number" [value]="newSemesterYear" (change)="onNewSemesterYearChange($event)" required class="form-control" id="year" placeholder="Year">
+          <div class="ng-autocomplete">
+            <ng-autocomplete #coursesAutoComplete [data]="coursesAutoCompleteData" (selected)="selectCourse($event)"
+              [searchKeyword]="'name'" [itemTemplate]="itemTemplate" [placeholder]="'Course...'"
+              [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.name"></a>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+          </div>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-6 col-md-3">
+          <input type="number" [value]="newSemesterYear" (change)="onNewSemesterYearChange($event)" required
+            class="form-control" id="year" placeholder="Year">
+        </div>
+        <div class="col-6 col-md-3">
           <select class="form-select" [value]="newSemesterName" (change)="onNewSemesterNameChange($event)">
             <option value="Spring" selected>Spring Semester</option>
             <option value="Autumn">Autumn Semester</option>
           </select>
         </div>
-        <div class="pt-2 pt-md-0 col-6 col-md-4">
+        <div class="pt-2 pt-md-0 col-6 col-md-3">
           <button type="button" class="btn btn-outline-primary" (click)="addSemester()">Add Semester</button>
         </div>
       </div>
-    </table>
-  </div>
-  <button type="submit" class="btn btn-primary text-white">Save</button>
-</form>
+    </div>
+    <button type="submit" class="btn btn-primary text-white">Save</button>
+  </form>
 </div>

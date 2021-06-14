@@ -1,0 +1,37 @@
+<div class="card" style="max-width: 700px;">
+    <div class="register-wrapper">
+      <img class="register-image" src="../../assets/images/login.svg" />
+      <div class="card-body">
+        <p class="lead mb-4 fs-4" style="max-width: 250px;">Register</p>
+        <form [formGroup]="registerForm" [class.was-validated]="wasValidated" (ngSubmit)="onSubmit()">
+            <div class="mb-2">
+                <div class="input-group">
+                  <span class="input-group-text bg-primary" id="basic-addon3"><i
+                      class="bi-person-lines-fill text-white"></i></span>
+                  <input required type="text" class="form-control" placeholder="Name" formControlName="name">
+                </div>
+              </div>
+          <div class="mb-2">
+            <div class="input-group">
+              <span class="input-group-text bg-primary" id="basic-addon3"><i
+                  class="bi-at text-white"></i></span>
+              <input required type="email" class="form-control" placeholder="Email" formControlName="email">
+            </div>
+          </div>
+          <div class="mb-2">
+            <div class="input-group">
+              <span class="input-group-text bg-primary" id="basic-addon3"><i class="bi-key-fill text-white"></i></span>
+              <input required type="password" placeholder="Password" class="form-control" formControlName="password">
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="input-group">
+              <span class="input-group-text bg-primary" id="basic-addon3"><i class="bi-key-fill text-white"></i></span>
+              <input required type="password" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary text-white fw-bold">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>

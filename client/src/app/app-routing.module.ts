@@ -15,6 +15,7 @@ import { EditClassSemesterComponent } from './edit-class-semester/edit-class-sem
 import { CoursesComponent } from './courses/courses.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -77,7 +78,8 @@ const routes: Routes = [
       },
     ]
   },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({

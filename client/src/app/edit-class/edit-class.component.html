@@ -15,6 +15,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th>Course</th>
             <th>Year</th>
             <th>Semester</th>
             <th></th>
@@ -22,6 +23,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let semester of semesters">
+            <td>{{semester.course.name}}</td>
             <td>{{semester.year}}</td>
             <td>{{semester.name}}</td>
             <td class="text-center">
@@ -32,7 +34,8 @@
       </table>
       <div class="row pt-3 pb-4">
         <div class="col-6 col-md-3">
-          <ng-autocomplete #coursesAutoComplete [data]="coursesAutoCompleteData" (selected)="selectCourse($event)"
+          <div class="ng-autocomplete">
+            <ng-autocomplete #coursesAutoComplete [data]="coursesAutoCompleteData" (selected)="selectCourse($event)"
             [searchKeyword]="'name'" [itemTemplate]="itemTemplate" [placeholder]="'Course...'"
             [notFoundTemplate]="notFoundTemplate">
           </ng-autocomplete>
@@ -44,6 +47,7 @@
           <ng-template #notFoundTemplate let-notFound>
             <div [innerHTML]="notFound"></div>
           </ng-template>
+          </div>
         </div>
         <div class="col-6 col-md-3">
           <input type="number" [value]="newSemesterYear" (change)="onNewSemesterYearChange($event)" class="form-control"

@@ -7,7 +7,7 @@
         <div class="mb-2">
           <div class="input-group">
             <span class="input-group-text bg-primary" id="basic-addon3"><i
-                class="bi-person-lines-fill text-white"></i></span>
+                class="bi-at text-white"></i></span>
             <input required type="email" class="form-control" placeholder="Email" formControlName="email">
           </div>
         </div>
@@ -17,7 +17,10 @@
             <input required type="password" placeholder="Password" class="form-control" formControlName="password">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary text-white fw-bold">Login</button>
+        <div class="d-flex">
+          <button type="submit" class="btn btn-primary text-white fw-bold">Login</button>
+          <a class="btn btn-primary text-white fw-bold" style="margin-left: auto;" routerLink="/register">Register</a>
+        </div>
       </form>
     </div>
   </div>

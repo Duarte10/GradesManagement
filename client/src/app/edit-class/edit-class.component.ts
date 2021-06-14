@@ -54,7 +54,7 @@ export class EditClassComponent implements OnInit, OnDestroy {
   }
 
   onNewSemesterYearChange(event: any) {
-    this.newSemesterYear = event.target.value;
+    this.newSemesterYear = parseInt(event.target.value);
   }
 
   onNewSemesterNameChange(event: any) {
@@ -70,7 +70,7 @@ export class EditClassComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (this.semesters.find(s => s.year === this.newSemesterYear && s.name === this.newSemesterName)) {
+    if (this.semesters.find(s => s.year === this.newSemesterYear && s.name === this.newSemesterName && s.course.name === this.selectedCourse.name)) {
       // Do nothing
       console.log('semester already exists');
       return;
@@ -178,7 +178,6 @@ export class EditClassComponent implements OnInit, OnDestroy {
         })
       },
       error => console.error(error)
-    )
+    );
   }
-
 }

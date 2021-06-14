@@ -1,5 +1,5 @@
 <div *ngIf="class" class="box">
-  <h5>{{class.name}} - {{semester.year}} ({{semester.name}} Semester)</h5>
+  <h5>{{semester.course.name}} - {{class.name}} - {{semester.year}} ({{semester.name}} Semester)</h5>
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link" style="cursor: pointer;" [class.active]="currentTab === 'evaluation'"
@@ -78,7 +78,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let student of semester.students">
-          <td>{{student.name}} - {{student.number}}</td>
+          <td style="vertical-align: middle;">{{student.name}} - {{student.number}}</td>
           <td *ngFor="let grade of student.grades" class="text-end">
             <input type="text" type="number" [value]="grade.grade" (change)="updatedStudentComponentGrade(student, grade, $event)" class="form-control" placeholder="grade" />
           </td>
