@@ -86,6 +86,8 @@ export class EditClassComponent implements OnInit, OnDestroy {
 
     // Mark form as dirty
     this.editClassForm.markAsDirty();
+    this.coursesAutoComplete.clear();
+    this.coursesAutoComplete.close();
   }
 
   onSubmit(): void {

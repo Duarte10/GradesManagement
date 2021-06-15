@@ -65,6 +65,9 @@ export class NewClassComponent implements OnInit {
     this.newSemesterYear = undefined;
     this.newSemesterName = "Spring";
     this.selectedCourse = undefined;
+
+    this.coursesAutoComplete.clear();
+    this.coursesAutoComplete.close();
   }
 
   onSubmit(): void {

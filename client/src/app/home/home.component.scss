@@ -19,9 +19,9 @@
   }
 
   .calendar {
-    border: 1px solid lightgray;
+    box-shadow: 0px 0px 11px 6px #d3d3d359;
     border-radius: 4px;
-    padding: 8px;
+    padding: 10px 20px;
     width: 100%;
 
     .year {
@@ -42,7 +42,7 @@
     .class {
       background-color: #d9635a;
       border-radius: 4px;
-      padding: 10px 20px;
+      padding: 8px;
       color: #fff;
       font-size: 18px;
       margin-bottom: 20px;
