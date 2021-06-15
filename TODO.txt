@@ -16,9 +16,9 @@ Courses (Assign course to class) [OK]
 
 N2HAVE: 
 Register Page [OKish] - password match validation not visible
+Home page - dashboards
 Import csv
 Paginacao
-Home page - dashboards
 View grades for class-semester + Print Grades Report
 Grades average
 Student - Create Inline
