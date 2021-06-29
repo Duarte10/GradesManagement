@@ -15,7 +15,7 @@ GradesManagement is a SPA for managing courses, classes, students and their grad
 
 Install Node, MongoDB, Angular CLI.
 
-Generate a public.key and a private.key files inside the server folder using [Online RSA Key Generator](https://travistidwell.com/jsencrypt/demo/) or another RSA Key generator tool.
+Generate the public.key and private.key files inside the server folder using [Online RSA Key Generator](https://travistidwell.com/jsencrypt/demo/) or another RSA Key generator tool.
 
 Install server and client dependencies using `npm i`.
 
