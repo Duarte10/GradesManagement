@@ -9,20 +9,21 @@ GradesManagement is a SPA for managing courses, classes, students and their grad
 * MongoDB
 * Angular
 * TypeScript
+* Bootstrap 5
 
 # Setup
 
 Install Node, MongoDB, Angular CLI.
 
-Generate a public.key and a private.key files under server folder using this like (Online RSA Key Generator)[https://travistidwell.com/jsencrypt/demo/] or another RSA Key generator tool.
+Generate the public.key and private.key files inside the server folder using [Online RSA Key Generator](https://travistidwell.com/jsencrypt/demo/) or another RSA Key generator tool.
 
 Install server and client dependencies using `npm i`.
 
-Run `npm run start` on the server folder.
+Run `npm run start` inside the server folder.
 
-Run `ng serve -o` on the client folder.
+Run `ng serve -o` inside the client folder.
 
-For more instructions on how to setup the MongoDB please refer to this (repository)[https://github.com/bobmacneal/node-api-jwt].
+For more instructions on how to setup the MongoDB please refer to this [repository](https://github.com/bobmacneal/node-api-jwt).
 
 # Authors
 * [Rafael Duarte](https://github.com/Duarte10)
