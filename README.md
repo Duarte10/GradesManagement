@@ -9,6 +9,7 @@ GradesManagement is a SPA for managing courses, classes, students and their grad
 * MongoDB
 * Angular
 * TypeScript
+* Bootstrap 5
 
 # Setup
 
